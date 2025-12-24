@@ -57,7 +57,6 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 
 ## 依赖：
 
-- Miniconda
 - python version: 3.10
 - Pytorch version: 2.8.0+cu129
 - CUDA version: 12.9
