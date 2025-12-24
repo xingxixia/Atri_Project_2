@@ -21,7 +21,7 @@ Atri_Project_2的目标是：
   2025年12月23日：
 
 - Check_Env.py是检查依赖的文件，不保成，想起来了就往里面塞一点，等整个Atri_2完成了再整体上修改。
-- Atri_2_1.0.py是最初始的文件，里面就只是从https://hf-mirror.com下载加载Qwen/Qwen2.5-3B-Instruct模型
+- Atri_2_1.0.py是最初始的文件，里面就只是从[国内镜像](https://hf-mirror.com)下载加载Qwen/Qwen2.5-3B-Instruct模型
 
 2025年12月24日：
 
