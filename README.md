@@ -34,11 +34,11 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 ### 2025年12月23日：
 
 - Check_Env.py是检查依赖的文件，不保成，想起来了就往里面塞一点，等整个Atri_2完成了再整体上修改。
-- Atri_2_1.0.py是最初始的文件，里面就只是从[国内镜像](https://hf-mirror.com)下载加载Qwen/Qwen2.5-3B-Instruct模型
+- Atri_2_1.0.py是最初始的文件，里面就只是从[国内镜像](https://hf-mirror.com)下载加载[Qwen/Qwen2.5-3B-Instruct ](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)模型。
 
 ### 2025年12月24日：
 
-- Atri_2_1.1.py使用Qwen/Qwen2.5-3B，是加了prompt的文件，输出只能说一坨，显然只是加prompt是不够的。接下来是应该是该用数据集训练一下，目的是仿人格文字输出方式，让我研究研究怎么做。
+- Atri_2_1.1.py使用[Qwen/Qwen2.5-3B](https://huggingface.co/Qwen/Qwen2.5-3B)，是加了prompt的文件，输出只能说一坨，显然只是加prompt是不够的。接下来是应该是该用数据集训练一下，目的是仿人格文字输出方式，让我研究研究怎么做。
 - 看了看网上有很多模型，感觉可以捞一个，但是呢，毕竟不是自己的，修改起来也麻烦，决定可以参考，但还是自定义
 - 文本数据集来自[ATRI && GINKA游戏文本分享#GAL#【galgame吧】](https://tieba.baidu.com/p/9078681496?pid=150538365370&cid=#150538365370)，作者:[星痕之弦](https://tieba.baidu.com/p/9078681496?pid=150538365370&cid=#150538365370)，数据集:[百度网盘](https://pan.baidu.com/s/1FTp5jsL2trGWkK7NF0dfwA?pwd=ATRI)。
 
