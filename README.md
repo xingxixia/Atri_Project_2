@@ -67,3 +67,5 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 - sentencepiece version: 0.2.1
 - tiktoken version: 0.12.0
 - chromadb version: 1.3.7
+
+If you use this code or model, please attribute: Original code/model by 星锡丅 (https://github.com/xingxixia/Atri_Project_2)
