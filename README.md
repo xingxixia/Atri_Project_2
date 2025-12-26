@@ -54,10 +54,12 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 
 - 今天看了一下lora的论文，然后修改了[Qwen2.5-3b Lora微调一个你自己的ATRI机器人_4070能lora微调多大的模型](https://blog.csdn.net/2501_92532948/article/details/150932768)里的代码，变成windows里面点击就能跑的代码，成功训练了，确实可以看到效果。只是嘛，不知道是不是我不会写prompt的缘故，这模型说他智障都是抬举它了。
 
-  <img src="image\2.png" alt="1" style="zoom:50%;" />
+  ![Atri2.1.2.2.png (1730×602)](https://tc.xingxixia.top/images/Atri_Project/Atri2/Atri2.1.2.2.png)
 
-  ![1](image\4.png)
+  
 
+  
+  
   真是令人无语。等后续在处理吧，文本可能也能仔细调一调。这个版本就这样吧先，暂时也没法训练。
 
 
