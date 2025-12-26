@@ -56,10 +56,8 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 
   ![Atri2.1.2.2.png (1730×602)](https://tc.xingxixia.top/images/Atri_Project/Atri2/Atri2.1.2.2.png)
 
-  
+  ![Atri2.1.2.5.png (1695×575)](https://tc.xingxixia.top/images/Atri_Project/Atri2/Atri2.1.2.5.png)
 
-  
-  
   真是令人无语。等后续在处理吧，文本可能也能仔细调一调。这个版本就这样吧先，暂时也没法训练。
 
 
