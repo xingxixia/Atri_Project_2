@@ -52,7 +52,7 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 
 ### 2025年12月16日
 
-- 今天看了一下lora的论文，然后修改了[Qwen2.5-3b Lora微调一个你自己的ATRI机器人_4070能lora微调多大的模型](https://blog.csdn.net/2501_92532948/article/details/150932768)里的代码，变成windows里面点击就能跑的代码，成功训练了，确实可以看到效果。只是嘛，不知道是不是我不会写prompt的缘故，这模型说他智障都是抬举它了。
+- 更新了2.1.2，今天看了一下lora的论文，然后修改了[Qwen2.5-3b Lora微调一个你自己的ATRI机器人_4070能lora微调多大的模型](https://blog.csdn.net/2501_92532948/article/details/150932768)里的代码，变成windows里面点击就能跑的代码，成功训练了，确实可以看到效果。只是嘛，不知道是不是我不会写prompt的缘故，这模型说他智障都是抬举它了。
 
   ![Atri2.1.2.2.png (1730×602)](https://tc.xingxixia.top/images/Atri_Project/Atri2/Atri2.1.2.2.png)
 
