@@ -3,21 +3,18 @@ import gradio as gr
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
 from threading import Thread
 
-# 这里指向你刚才合并保存的模型路径
 MODEL_PATH = "./merged_atri_model"
 
-# 加载模型和Tokenizer ---
-print("正在加载模型，请稍候...")
+print("正在加载模型")
 try:
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, torch_dtype=torch.float16,  device_map="auto") # 4060显卡使用半精度加载
     print("模型加载成功！")
 except Exception as e:
-    print(f"模型加载失败，请检查路径是否正确：{MODEL_PATH}")
+    print(f"模型加载失败，检查路径是否正确：{MODEL_PATH}")
     print(f"错误信息: {e}")
     exit()
 
-# --- 2. 定义 ATRI 的人设 (System Prompt) ---
 SYSTEM_PROMPT = """
 现在你要扮演 ATRI (亚托莉)。
 人设信息：
@@ -29,7 +26,7 @@ SYSTEM_PROMPT = """
 """
 
 
-# --- 3. 定义对话生成函数 ---
+# --- 对话生成函数 ---
 def predict(message, history):
 
     # 构造符合 Qwen 格式的消息列表
@@ -64,7 +61,7 @@ def predict(message, history):
         yield partial_message
 
 
-# --- 4. 搭建 Gradio 界面 ---
+# --- 搭建 Gradio 界面 ---
 # 使用 ChatInterface 快速构建类似 ChatGPT 的界面
 demo = gr.ChatInterface(
     fn=predict,
@@ -74,7 +71,6 @@ demo = gr.ChatInterface(
     cache_examples=False,
 )
 
-# --- 5. 启动 ---
+# --- 启动 ---
 if __name__ == "__main__":
-    # web 页面会自动在浏览器打开
     demo.launch(inbrowser=True, share=False)

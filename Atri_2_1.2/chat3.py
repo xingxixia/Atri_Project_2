@@ -20,7 +20,6 @@ except Exception as e:
     print(f"模型加载失败: {e}")
     exit()
 
-# --- 3. 定义 Prompt 和 屏蔽词 ---
 SYSTEM_PROMPT = """
 现在你要扮演 ATRI (亚托莉)。
 人设信息：

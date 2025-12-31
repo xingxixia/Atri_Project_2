@@ -8,8 +8,6 @@ from datasets import Dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer, DataCollatorForSeq2Seq
 from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 
-# --- 全局配置 ---
-# 设置国内镜像
 #os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 
@@ -24,7 +22,7 @@ MERGED_MODEL_PATH = "./merged_atri_model"
 keywords = ['夏生', 'ATRI']
 
 def clear_cache():
-    #清理显存和内存
+    # 清理显存和内存
     print("\n[System]正在清理显存...")
     gc.collect()
     if torch.cuda.is_available():
@@ -47,7 +45,7 @@ def prepare_data():
     current_chunk = []
 
     for line in all_lines:
-        if line.startswith("夏生："):
+        if line.startswith("夏生："):# 和原作者不同的是，这里要加上一个“：”，因为文本是诸如“夏生：”这样的东西，换句话说，只有加了冒号才能是角色在说话，不然可能是旁白
             if current_speaker == "ATRI" and current_chunk:
                 outputs.append(current_chunk)
                 current_chunk = []
@@ -60,7 +58,7 @@ def prepare_data():
             current_speaker = "ATRI"
             current_chunk.append(line)
 
-    # 处理最后一个块
+    # 按照原作者，这里是最后条文本，由于后面没有人称转换，需要特殊处理
     if current_chunk:
         if current_speaker == "夏生":
             instructions.append(current_chunk)
@@ -71,7 +69,7 @@ def prepare_data():
     min_len = min(len(instructions), len(outputs))
 
     datas = []
-    # 跳过第一条可能过长的数据
+    # 跳过第一条可能过长的数据（不懂作者为何跳过，感觉是冗余设计，不过暂时就先这样设置着吧）
     for i in range(1, min_len):
         chunk_instructions = instructions[i]
         chunk_outputs = outputs[i]
@@ -93,7 +91,6 @@ def prepare_data():
 
 def train():
     print("=== TRAINING START ===")
-    device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # 加载 Tokenizer
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
@@ -106,11 +103,13 @@ def train():
     # 加载模型
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype="auto", device_map="auto")
 
+
+    # 下面是重点----------------------------------------------------------------------------------------------------------
     # LoRA 配置
     lora_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-        r=64,
+        r=64, # 文本比较长，有上千条对话文本，我希望他能模仿角色说话但不是复述
         lora_alpha=128,
         lora_dropout=0.1,
     )
@@ -177,7 +176,6 @@ def train():
 
     trainer.train()
 
-    # 保存LoRA
     trainer.model.save_pretrained(FINAL_LORA_PATH)
     tokenizer.save_pretrained(FINAL_LORA_PATH)
     print(f"LoRA权重已保存至: {FINAL_LORA_PATH}")
@@ -185,8 +183,9 @@ def train():
     # 释放显存
     del model, trainer
     clear_cache()
+    # ------------------------------------------------------------------------------------------------------------------
 
-def test_and_merge():
+def test_and_merge(): # 测试部分
     print("=== 开始测试与合并阶段 ===")
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
@@ -211,6 +210,19 @@ def test_and_merge():
 
     inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     with torch.no_grad():
         outputs = model.generate(**inputs, max_new_tokens=512, do_sample=True, top_k=50, temperature=0.7)
         generated_ids = [
@@ -224,6 +236,17 @@ def test_and_merge():
     merged_model.save_pretrained(MERGED_MODEL_PATH)
     tokenizer.save_pretrained(MERGED_MODEL_PATH)
     print(f"合并完成！完整模型位于: {MERGED_MODEL_PATH}")
+
+
+
+
+
+
+
+
+
+
+
 
     del model, base_model, merged_model
     clear_cache()

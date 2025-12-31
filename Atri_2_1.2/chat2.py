@@ -7,7 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStream
 from threading import Thread
 import torch
 
-# 1. 加载模型
+# 加载模型
 # model_name = "Qwen/Qwen2.5-3B-Instruct"
 # model_name = "./merged_atri_model"
 #
@@ -15,7 +15,6 @@ import torch
 # model = AutoModelForCausalLM.from_pretrained(model_name, dtype="auto", device_map="auto")
 # tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-# 这里指向你刚才合并保存的模型路径
 MODEL_PATH = "./merged_atri_model"
 
 # 加载模型和Tokenizer ---
@@ -86,7 +85,6 @@ bad_words_ids = tokenizer(
 # """
 
 def predict(message, history):
-    # 打印一下，方便万一报错时看一眼
     print(f"Original History Element: {history[0] if history else 'Empty'}")
 
     messages = [
@@ -94,7 +92,7 @@ def predict(message, history):
         {"role": "system", "content": SYSTEM_PROMPT}
     ]
 
-    # 2. 强力清洗历史记录
+    # 强力清洗历史记录
     for entry in history:
         user_text = ""
         assistant_text = ""
@@ -120,12 +118,12 @@ def predict(message, history):
             messages.append({"role": "user", "content": u_str})
             messages.append({"role": "assistant", "content": a_str})
 
-    # 3. 添加当前消息
+    # 添加当前消息
     # 同样预防 message 是字典的情况
     current_message = message.get("text", "") if isinstance(message, dict) else str(message)
     messages.append({"role": "user", "content": current_message})
 
-    # 4. 推理准备
+    # 推理准备
     text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 

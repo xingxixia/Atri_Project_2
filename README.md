@@ -68,7 +68,8 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 
 ### 2025年12月31日
 
-- 今年2025年最后一天啊，真是令人感叹。今天做了Atri_2_1.2/test6，本质就是chat3的代码，然后把接口换了换，把输入变成(inputs_id--------imputs_embedding)+(history_embedding/prefix_embedding)了,这样一来就不会再走embedding查询层，方便对history进行压缩。
+- 今年2025年最后一天啊，真是令人感叹。今天做了Atri_2_1.2/test6，本质就是chat3的代码，然后把接口换了换，把输入变成(inputs_id--------imputs_embedding)+(history_embedding/prefix_embedding)了,这样一来就不会再走embedding查询层，方便对history进行压缩。缺点是后续处理会延长推理时间。
+- 感觉把lora笔记写一写，lora这块儿就可以过了，然后看看flylora和Nested Learning好了。
 
 
 
