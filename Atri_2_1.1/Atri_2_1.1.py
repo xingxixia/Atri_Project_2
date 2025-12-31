@@ -1,3 +1,5 @@
+### 原作者代码 + AI 辅助生成（毕竟原作者是在ubuntu上写的，一句一句变成windows适配挺麻烦的）
+
 import os
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
