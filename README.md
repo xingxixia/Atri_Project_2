@@ -75,6 +75,11 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 - 或许我可以加一个比较小的语音模型，正好我打开了embedding层，可以将语音模型的输出（非文字）直接对其到Atri文本模型，不过即便是这样显存也有点太吃紧了，啊啊啊啊啊我要是很有钱就好了。最近需要的电脑配件全都在涨价，涨的太猛了点，烦死了。
 - 把lora笔记写一写，lora这块儿就可以过了，然后看看flylora和Nested Learning好了，然后再去看deepseek org，不对应该先看看ai语音领域的论文。
 
+### 2026年1月1日
+
+- 笔记在[LoRA Paper Reading Notes | 星锡丅の后宅](https://xingxixia.github.io/2025/12/25/DeepLearning/LoRA-Paper-Reading-Notes/)发布，哎呀，今天可是新年。
+- 我在做什么，我该做什么，我想做什么？
+
 
 
 ## 电脑配置：
