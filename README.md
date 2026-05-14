@@ -80,7 +80,9 @@ Atri_5则是实体机器，真正的让Atri降临在这个世界上，思路和�
 - 笔记在[LoRA Paper Reading Notes | 星锡丅の后宅](https://xingxixia.github.io/2025/12/25/DeepLearning/LoRA-Paper-Reading-Notes/)发布，哎呀，今天可是新年。
 - 我在做什么，我该做什么，我想做什么？
 
+### 2026年5月15日
 
+- ai真好用啊，能直接帮我把文本处理了，还能根据现有文本生成文本，我说ai是神有没有意见。并且ai还能改掉我的屎山，重构整个项目，一下子就看起来正规了。
 
 ## 电脑配置：
 
