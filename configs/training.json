@@ -1,0 +1,49 @@
+{
+  "model": {
+    "base_model": "Qwen/Qwen2.5-3B-Instruct",
+    "output_dir": "models/atri_lora_tone_v4",
+    "merged_dir": "models/atri_merged_tone_v4",
+    "torch_dtype": "float16"
+  },
+  "data": {
+    "raw_docx": "data/raw/ATRI-my dear moments.docx",
+    "raw_txt": "data/raw/ATRI-my dear moments.txt",
+    "cleaned_jsonl": "data/processed/atri_dialogue_clean.jsonl",
+    "train_jsonl": "data/processed/atri_train.jsonl",
+    "max_source_chars": 260,
+    "max_target_chars": 220,
+    "min_target_chars": 2
+  },
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "training": {
+    "max_length": 384,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "num_train_epochs": 1,
+    "learning_rate": 5e-05,
+    "logging_steps": 5,
+    "save_strategy": "epoch",
+    "gradient_checkpointing": true,
+    "fp16": true
+  },
+  "generation": {
+    "max_new_tokens": 160,
+    "temperature": 0.45,
+    "top_p": 0.82,
+    "top_k": 40,
+    "repetition_penalty": 1.15
+  }
+}
